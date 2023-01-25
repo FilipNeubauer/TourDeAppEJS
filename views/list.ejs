@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="index.js"></script>
+
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <h1>Tour de App</h1>
+
+        <div class="flex-container">
+
+            <% records.slice().reverse().forEach((element)=>{ %>
+                <div class="flex-item">
+
+                    <div id="<%= element.recordId %>">
+
+
+                        <div class="buttons">
+                            <input class="button-rating" type="button" onclick="openUpdate()"
+                                name="<%= element.recordId %>" value="Update" />
+                            <form class="button-rating" action="/delete" method="post">
+                                <button type="submit" name="deleteId" value="<%= element.recordId %>">Delete</button>
+                            </form>
+                        </div>
+
+                        <div class="record-heading">
+                            <h2 class="language">
+                                <%= element.language%>
+                            </h2>
+
+
+                            <p>
+                                <%= element.rating%>
+                            </p>
+
+
+                        </div>
+                        <div>
+                            <p>
+                                <%= element.date %>, stráveno <%= element.time%> hodin
+                            </p>
+                        </div>
+
+                        <div class="description">
+                            <p>
+                                <%= element.description%>
+                            </p>
+                        </div>
+
+
+
+                        <!-- <form action="/update" method="post">
+                <button type="submit" name="updateId" value="<%= element.recordId %>">Update</button>
+            </form> -->
+                    </div>
+                </div>
+
+                <%})%>
+
+
+        </div>
+
+        <input class="add-button" type="button" onclick="openAdd()">
+
+    </div>
+
+
+    <div class="add-div">
+        <form id="add-form" action="/add" method="post" style="display: none;">
+            <input type="hidden" name="id" value="1">
+
+            <div class="form-props">
+                <label for="date">Datum:</label>
+                <input type="date" name="date">
+            </div>
+
+            <div class="form-props">
+                <label for="language">Jazyk:</label>
+                <input type="text" name="language" class="input-props">
+            </div>
+
+            <div class="form-props">
+                <label for="time">Strávený čas:</label>
+                <input type="number" name="time" lass="input-props">
+            </div>
+
+            <div class="form-props">
+                <label for="rating">Hodnocení:</label>
+                <input type="number" name="rating" lass="input-props">
+            </div>
+
+            
+            <label for="description">Popis:</label>
+            <div>
+                <textarea name="description" id="" cols="30" rows="10"></textarea>
+            </div>
+
+            <button type="submit">Add</button>
+        </form>
+
+    </div>
+
+
+    <div class="update-div">
+        <form action="/update" style="display: none;" id="update-form" method="post">
+
+            <input id="updateId" type="hidden" name="id" value="1">
+            <input id="updateLanguage" type="text" name="language">
+            <input id="updateTime" type="number" name="time">
+            <input id="updateRating" type="number" name="rating">
+            <input id="updateDate" type="date" name="date">
+            <textarea id="updateDesc" name="description" id="" cols="30" rows="10"></textarea>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+    <div class="light-box" onclick="clickedLightBox()">
+    </div>
+
+
+</body>
+
+</html>
