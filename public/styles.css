@@ -1,19 +1,60 @@
+body {
+    background-color: #000212;
+}
+
+
 .container {
     margin: 0 auto;
-    max-width: 48rem;
+    max-width: 44rem;
     width: 90%;
 }
 
 h1 {
     text-align: center;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-size: 43px;
+    font-weight: 700;
+
+    background: linear-gradient(270deg, #AD6EBD 0.01%, #76439E 0.02%, #3351B8 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+/* text-fill-color: transparent; */
+
+padding-top: 40px;
+padding-bottom: 40px;
+
+
 }
 
 h2 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
     margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+
+    padding-left: 30px;
 }
 
 p {
     margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Roboto";
+}
+
+input, textarea {
+    border: solid;
+    border-color: #76439E;
+    border-radius: 5px;
+ 
+    
+}
+
+textarea {
+    min-width: 300px;
+    resize: none;
 }
 
 .flex-container {
@@ -21,16 +62,24 @@ p {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
+
+    gap: 30px;
 }
 
 
 
 
 .flex-item {
-    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(118, 67, 158, 0.15) 0%, rgba(52, 81, 183, 0.02) 100%);
+border: 1px solid rgba(255, 255, 255, 0.05);
+box-shadow: 0px 4px 27px rgba(0, 0, 0, 0.25);
+border-radius: 41px;
+isolation: isolate;
+box-sizing: border-box;
+    /* border-radius: 10px; */
 
-    border-style: solid;
-    border-color: black;
+    /* border-style: solid;
+    border-color: black; */
 }
 
 .language {
@@ -48,16 +97,33 @@ p {
 
 .button-rating {
     display: inline-block;
+    color: rgba(255, 255, 255, 0.3);
+
+}
+
+.button-rating:hover {
+color: #76439E;
+cursor: pointer;
+
 }
 
 .buttons {
     display: flex;
     flex-direction: row;
     justify-content: end;
+
+    padding-top: 20px;
+    padding-right: 30px;
+    gap: 5px;
 }
 
 .description {
-    height: 100px;
+    min-height: 100px;
+
+    padding-top: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
 }
 
 
@@ -71,8 +137,26 @@ p {
     width: 100px;
 }    */
 
-.input-props {
+.input-props, textarea {
     width: 121px;
+    background-color: rgba(118, 67, 158, 0.15) ;
+    color: rgba(255, 255, 255, 0.8);
+    
+}
+
+.date-time {
+    color: rgba(255, 255, 255, 0.3);
+    
+    padding-left: 30px;
+    padding-top: 5px;
+}
+
+.record-heading p {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.colored {
+    color: #AD6EBD;
 }
 
 
@@ -82,9 +166,25 @@ p {
     position: fixed;
     bottom: 5rem;
     right: 5rem;
+background-color: #76439E;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 60px;
+width: 60px;
 
-    height: 3rem;
-    width: 3rem;
+    /* height: 3rem;
+    width: 3rem; */
+}
+
+.add-button:hover {
+    background-color: #AD6EBD;
+    cursor: pointer;
+}
+
+.add-button i {
+    font-size: 30px;
 }
 
 
@@ -98,8 +198,17 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
+    border-radius: 41px;
 
-    background-color: white;
+    flex-direction: column;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    border: solid;
+    border-color: #76439E;
+    background: #000212;
+
+
+    padding: 30px;
 }
 
 .update-div {
@@ -107,7 +216,20 @@ p {
     z-index: 2;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);    
+    display: flex;
+
+    border-radius: 41px;
+
+    flex-direction: column;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    border: solid;
+    border-color: #76439E;
+    background: #000212;
+
+
+    padding: 30px;
 }
 
 .light-box {
@@ -116,9 +238,30 @@ p {
     top: 0;
     left: 0;
     background-color: black;
-    opacity: 0.6;
+    opacity: 0.7;
     height: 150%;
     width: 100%;
     visibility: hidden;
 }
 
+.ratings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-right: 30px;
+}
+
+.post-add-button {
+    display: flex;
+    justify-content: center;
+}
+
+.post-add-button button {
+    height: 30px;
+    width: 100px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #76439E;
+
+    border-radius: 10px;
+}

@@ -42,7 +42,7 @@ app.get("/", (req, res)=>{ //odpovídám načetním databáze, nakonci každého
             // console.log(records);
 
         })
-        // console.log(records);
+        console.log(records);
 
         res.render("list", {records:records});
 

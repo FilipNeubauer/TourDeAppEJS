@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="styles.css">
     <script type="text/javascript" src="index.js"></script>
 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    
+    <script src="https://kit.fontawesome.com/d8655b52b5.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -17,21 +24,26 @@
 
     <div class="container">
 
-        <h1>Tour de App</h1>
+        <h1>Programátorův deník</h1>
 
         <div class="flex-container">
 
             <% records.slice().reverse().forEach((element)=>{ %>
                 <div class="flex-item">
 
-                    <div id="<%= element.recordId %>">
+                    <div id="<%= element.recordId %>" class="flex-item-stuff">
 
 
                         <div class="buttons">
-                            <input class="button-rating" type="button" onclick="openUpdate()"
-                                name="<%= element.recordId %>" value="Update" />
-                            <form class="button-rating" action="/delete" method="post">
-                                <button type="submit" name="deleteId" value="<%= element.recordId %>">Delete</button>
+                            <div class="button-rating" type="button" onclick="openUpdate()"
+                            id="<%=element.recordId %>update"  ><i id="<%=element.recordId %>update" class="fa-solid fa-pen-to-square"></i></div>
+                            <!-- <input class="button-rating" type="button" onclick="openUpdate()"
+                                name="<%=//element.recordId %>" value="Update" /> -->
+                            <form class="button-rating" action="/delete" method="post" id="delForm<%=element.recordId%>">
+                                <!-- <button type="submit" name="deleteId" value="<%= //element.recordId %>">Delete</button> -->
+                                <input type="hidden" name="deleteId" value="<%= element.recordId %>">
+                                <div ><i onclick="deleteForm()" id="<%=element.recordId%>delete" class="fa-solid fa-trash"></i></div>
+
                             </form>
                         </div>
 
@@ -41,15 +53,51 @@
                             </h2>
 
 
-                            <p>
-                                <%= element.rating%>
+                            <p id="<%=element.rating%>" class="ratings">
+                                <%if(element.rating == 0) { %>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                <%} else if (element.rating == 1) {%>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                <%} else if (element.rating ==2 ) {%>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                <%} else if (element.rating == 3) {%>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                <%} else if (element.rating == 4) {%>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star"></i> 
+                                <%} else {%>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                <%}%>
                             </p>
 
 
                         </div>
                         <div>
-                            <p>
-                                <%= element.date %>, stráveno <%= element.time%> hodin
+                            <p class="date-time">
+                                <span><%= element.date %></span><span>, stráveno: </span><span><%= element.time%></span><span> h</span>
                             </p>
                         </div>
 
@@ -72,60 +120,97 @@
 
         </div>
 
-        <input class="add-button" type="button" onclick="openAdd()">
+        <div class="add-button" type="button" onclick="openAdd()"><i class="fa-solid fa-plus"></i></div>
 
     </div>
 
+    <form id="add-form" action="/add" method="post">
 
-    <div class="add-div">
-        <form id="add-form" action="/add" method="post" style="display: none;">
-            <input type="hidden" name="id" value="1">
+    <div class="add-div" style="visibility: hidden;">
+            <input type="hidden" name="id">
 
             <div class="form-props">
                 <label for="date">Datum:</label>
-                <input type="date" name="date">
+                <input type="date" name="date" class="input-props" required>
             </div>
 
             <div class="form-props">
                 <label for="language">Jazyk:</label>
-                <input type="text" name="language" class="input-props">
+                <input type="text" name="language" class="input-props" required>
             </div>
 
             <div class="form-props">
                 <label for="time">Strávený čas:</label>
-                <input type="number" name="time" lass="input-props">
+                <input type="number" name="time" class="input-props" min="0" required>
             </div>
 
             <div class="form-props">
                 <label for="rating">Hodnocení:</label>
-                <input type="number" name="rating" lass="input-props">
+                <input type="number" name="rating" class="input-props" min="1" max="5" required>
             </div>
 
             
             <label for="description">Popis:</label>
             <div>
-                <textarea name="description" id="" cols="30" rows="10"></textarea>
+                <textarea name="description" id="" cols="30" rows="10" required></textarea>
             </div>
 
+            <div class="post-add-button">
             <button type="submit">Add</button>
-        </form>
-
+            </div>
     </div>
+</form>
 
 
-    <div class="update-div">
-        <form action="/update" style="display: none;" id="update-form" method="post">
+<form action="/update"  id="update-form" method="post">
+    <div class="update-div" style="visibility: hidden;">
+
 
             <input id="updateId" type="hidden" name="id" value="1">
+
+            <div class="form-props">
+                <label for="date">Datum:</label>
+                <input id="updateDate" type="date" name="date" class="input-props" required>
+            </div>
+
+            <div class="form-props">
+                <label for="language">Jazyk:</label>
+                <input id="updateLanguage" type="text" name="language" class="input-props" required>
+            </div>
+
+            <div class="form-props">
+                <label for="time">Strávený čas:</label>
+                <input id="updateTime" type="number" name="time" class="input-props" required min="0">
+            </div>
+
+            <div class="form-props">
+                <label for="rating">Hodnocení:</label>
+                <input id="updateRating" type="number" name="rating" class="input-props" min="1" max="5" required>
+            </div>
+
+            
+            <label for="description">Popis:</label>
+            <div>
+                <textarea id="updateDesc" name="description" id="" cols="30" rows="10" required></textarea>
+            </div>
+
+            <!-- <label for="language">Jazyk</label>
             <input id="updateLanguage" type="text" name="language">
+
+            <label for="language">Jazyk</label>
             <input id="updateTime" type="number" name="time">
+
+            <label for="language">Jazyk</label>
             <input id="updateRating" type="number" name="rating">
             <input id="updateDate" type="date" name="date">
-            <textarea id="updateDesc" name="description" id="" cols="30" rows="10"></textarea>
+            <textarea id="updateDesc" name="description" id="" cols="30" rows="10"></textarea> -->
 
-            <button type="submit">Update</button>
-        </form>
+            <div class="post-add-button">
+                <button type="submit">Update</button>
+            </div>
+
     </div>
+</form>
 
     <div class="light-box" onclick="clickedLightBox()">
     </div>
