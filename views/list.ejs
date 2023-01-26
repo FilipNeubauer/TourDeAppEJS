@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto&display=swap" rel="stylesheet">
-    
+
     <script src="https://kit.fontawesome.com/d8655b52b5.js" crossorigin="anonymous"></script>
 
 </head>
@@ -36,13 +36,16 @@
 
                         <div class="buttons">
                             <div class="button-rating" type="button" onclick="openUpdate()"
-                            id="<%=element.recordId %>update"  ><i id="<%=element.recordId %>update" class="fa-solid fa-pen-to-square"></i></div>
+                                id="<%=element.recordId %>update"><i id="<%=element.recordId %>update"
+                                    class="fa-solid fa-pen-to-square"></i></div>
                             <!-- <input class="button-rating" type="button" onclick="openUpdate()"
                                 name="<%=//element.recordId %>" value="Update" /> -->
-                            <form class="button-rating" action="/delete" method="post" id="delForm<%=element.recordId%>">
+                            <form class="button-rating" action="/delete" method="post"
+                                id="delForm<%=element.recordId%>">
                                 <!-- <button type="submit" name="deleteId" value="<%= //element.recordId %>">Delete</button> -->
                                 <input type="hidden" name="deleteId" value="<%= element.recordId %>">
-                                <div ><i onclick="deleteForm()" id="<%=element.recordId%>delete" class="fa-solid fa-trash"></i></div>
+                                <div><i onclick="deleteForm()" id="<%=element.recordId%>delete"
+                                        class="fa-solid fa-trash"></i></div>
 
                             </form>
                         </div>
@@ -54,50 +57,54 @@
 
 
                             <p id="<%=element.rating%>" class="ratings">
-                                <%if(element.rating == 0) { %>
+                                <%if(element.rating==0) { %>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
-                                <%} else if (element.rating == 1) {%>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                <%} else if (element.rating ==2 ) {%>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                <%} else if (element.rating == 3) {%>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                <%} else if (element.rating == 4) {%>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star"></i> 
-                                <%} else {%>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
-                                <%}%>
+                                    <%} else if (element.rating==1) {%>
+                                        <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <%} else if (element.rating==2 ) {%>
+                                            <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                            <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <%} else if (element.rating==3) {%>
+                                                <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <%} else if (element.rating==4) {%>
+                                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                    <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <%} else {%>
+                                                        <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                        <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                        <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                        <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                        <i class="fa-solid fa-star" style="color: #AD6EBD;"></i>
+                                                        <%}%>
                             </p>
 
 
                         </div>
                         <div>
                             <p class="date-time">
-                                <span><%= element.date %></span><span>, stráveno: </span><span><%= element.time%></span><span> h</span>
+                                <span>
+                                    <%= element.date %>
+                                </span><span>, stráveno: </span><span>
+                                    <%= element.time%>
+                                </span><span> h</span>
                             </p>
                         </div>
 
@@ -126,7 +133,7 @@
 
     <form id="add-form" action="/add" method="post">
 
-    <div class="add-div" style="visibility: hidden;">
+        <div class="add-div" style="visibility: hidden;">
             <input type="hidden" name="id">
 
             <div class="form-props">
@@ -149,21 +156,21 @@
                 <input type="number" name="rating" class="input-props" min="1" max="5" required>
             </div>
 
-            
+
             <label for="description">Popis:</label>
             <div>
                 <textarea name="description" id="" cols="30" rows="10" required></textarea>
             </div>
 
             <div class="post-add-button">
-            <button type="submit">Add</button>
+                <button type="submit">Add</button>
             </div>
-    </div>
-</form>
+        </div>
+    </form>
 
 
-<form action="/update"  id="update-form" method="post">
-    <div class="update-div" style="visibility: hidden;">
+    <form action="/update" id="update-form" method="post">
+        <div class="update-div" style="visibility: hidden;">
 
 
             <input id="updateId" type="hidden" name="id" value="1">
@@ -188,7 +195,7 @@
                 <input id="updateRating" type="number" name="rating" class="input-props" min="1" max="5" required>
             </div>
 
-            
+
             <label for="description">Popis:</label>
             <div>
                 <textarea id="updateDesc" name="description" id="" cols="30" rows="10" required></textarea>
@@ -209,13 +216,17 @@
                 <button type="submit">Update</button>
             </div>
 
-    </div>
-</form>
+        </div>
+    </form>
 
     <div class="light-box" onclick="clickedLightBox()">
     </div>
 
+    <!-- <hr> -->
+    <footer>
 
+        Made by AG Developers
+    </footer>
 </body>
 
 </html>

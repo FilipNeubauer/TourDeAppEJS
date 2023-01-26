@@ -12,13 +12,14 @@ function openUpdate() {
 
 
     let updateDate = document.getElementById(recordId.toString(10)).getElementsByTagName("span")[0].innerHTML
+    // console.log(updateDate)
     let updateTime = document.getElementById(recordId.toString(10)).getElementsByTagName("span")[2].innerHTML
     let updateLanguage = document.getElementById(recordId.toString(10)).getElementsByTagName("h2")[0].innerHTML
     let updateRating = document.getElementById(recordId.toString(10)).getElementsByClassName("record-heading")[0].getElementsByTagName("p")[0].id
     // console.log(document.getElementById(recordId.toString(10)).getElementsByClassName("record-heading")[0].getElementsByTagName("p")[0].innerHTML)
     let updateDesc = document.getElementById(recordId.toString(10)).getElementsByClassName("description")[0].getElementsByTagName("p")[0].innerHTML
     
-
+    console.log(updateTime)
     // console.log(document.getElementById(recordId.toString(10)).getElementsByTagName("span"))
     // let updateDateTime = document.getElementById(recordId.toString(10)).getElementsByTagName("div")[2].getElementsByTagName("p")[0].getElementsByTagName("span");
     // // console.log(typeof(updateDateTime))
@@ -28,15 +29,15 @@ function openUpdate() {
 
     // console.log(document.getElementById("updateDate"))
     // console.log(typeof(updateDate));
-
-    document.getElementById("updateDate").value = updateDate;
+    // console.log(document.getElementById("updateDate"))
+    document.getElementById("updateDate").value = updateDate.trim();
     document.getElementById("updateLanguage").value = updateLanguage.trim();
     document.getElementById("updateRating").value = updateRating.trim();
     document.getElementById("updateDesc").value = updateDesc.trimStart().trimEnd();
 
 
    // document.getElementById("updateLanguage").value = document.getElementById(recordId.toString(10)).getElementsByTagName("p")[1].innerHTML
-    document.getElementById("updateTime").value = updateTime;
+    document.getElementById("updateTime").value = updateTime.trim();
   //  document.getElementById("updateRating").value = document.getElementById(recordId.toString(10)).getElementsByTagName("p")[3].innerHTML
    // document.getElementById("updateDesc").value = document.getElementById(recordId.toString(10)).getElementsByTagName("p")[4].innerHTML
 

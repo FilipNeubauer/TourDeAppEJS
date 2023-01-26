@@ -1,5 +1,8 @@
 body {
     background-color: #000212;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -55,6 +58,31 @@ input, textarea {
 textarea {
     min-width: 300px;
     resize: none;
+}
+
+hr {
+    width: 100%;
+}
+
+
+footer {
+    /* position: absolute; */
+    font-family: "Roboto";
+
+
+    bottom: 0;
+
+    background: linear-gradient(270deg, #AD6EBD 0.01%, #76439E 0.02%, #3351B8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 15px;
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    padding: 15px;
 }
 
 .flex-container {
