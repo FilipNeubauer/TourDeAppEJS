@@ -11,6 +11,7 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
+const PORT = 8080;
 
 
 const db = new sqlite3.Database("./test.db", sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
@@ -175,6 +176,6 @@ app.post("/delete", (req, res)=>{ // smaže
 
 
 
-app.listen(3000, ()=>{
-    console.log("server running on port 3000");
+app.listen(PORT, ()=>{
+    console.log("server running on port " + PORT);
 })
