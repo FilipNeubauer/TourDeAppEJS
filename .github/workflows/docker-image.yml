@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build my-app .
+      run: docker build -t my-app .
     - uses: Tour-de-App/upload-app@1079ded462c5c87ecd77039a955dda2e9db1d809
       with:
           team_secret: ${{ secrets.TEAM_SECRET }}
