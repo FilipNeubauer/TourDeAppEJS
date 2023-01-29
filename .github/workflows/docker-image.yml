@@ -20,4 +20,4 @@ jobs:
       with:
           team_secret: ${{ secrets.TEAM_SECRET }}
           image_name: my-app
-          image_path: my-app
+          image_path: ./my-app
