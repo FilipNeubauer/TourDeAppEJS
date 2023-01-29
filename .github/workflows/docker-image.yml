@@ -17,12 +17,12 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./
-          tags: tda-node:latest
-          outputs: type=docker,dest=tda-node.tar
+          tags: ag-app:latest
+          outputs: type=docker,dest=ag-app.tar
 
       - name: Upload to TdA
         uses: Tour-de-App/upload-app@1079ded462c5c87ecd77039a955dda2e9db1d809
         with:
           team_secret: ${{ secrets.TEAM_SECRET }}
-          image_name: tda-node
-          image_path: tda-node.tar
+          image_name: ag-app
+          image_path: ag-app.tar
