@@ -15,9 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag app:$(date +%s)
     - uses: Tour-de-App/upload-app@1079ded462c5c87ecd77039a955dda2e9db1d809
       with:
           team_secret: ${{ secrets.TEAM_SECRET }}
-          image_name: my-app
-          image_path: my-image-name
+          image_name: app
+          image_path: app
