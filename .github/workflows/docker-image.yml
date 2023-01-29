@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name
+    - uses: Tour-de-App/upload-app@1079ded462c5c87ecd77039a955dda2e9db1d809
+      with:
+          team_secret: ${{ secrets.TEAM_SECRET }}
+          image_name: my-image-name
+          image_path: ./my-image-name
