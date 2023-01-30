@@ -43,7 +43,7 @@ app.get("/", (req, res)=>{ //odpovídám načetním databáze, nakonci každého
             // console.log(records);
 
         })
-        console.log(records);
+        // console.log(records);
 
         res.render("list", {records:records});
 
@@ -74,7 +74,7 @@ app.post("/add", (req, res)=> {  // přidávám do databáze
 
     let sqlAdd = `INSERT INTO programming_train(date, language, time, rating, description) VALUES (?,?,?,?,?)`;
     db.run(sqlAdd, [date, language, time, rating, description]);
-    console.log("ADDED");
+    // console.log("ADDED");
     // records.push(record)
 
     res.redirect("/");
@@ -92,7 +92,7 @@ app.post("/add", (req, res)=> {  // přidávám do databáze
 app.post("/update", (req, res)=>{   // upravuje
     const body = req.body;
 
-    console.log(body)
+    // console.log(body)
 
     const date = body.date;
     const language = body.language;
@@ -135,7 +135,7 @@ app.post("/update", (req, res)=>{   // upravuje
 app.post("/delete", (req, res)=>{ // smaže
 
     const body = req.body;
-    console.log(body)
+    // console.log(body)
     const id = body.deleteId;
 
     let sqlDel = "DELETE FROM programming_train WHERE recordId=?";
