@@ -1,5 +1,4 @@
 name: Build and push to TdA
-
 on: [push]
 
 jobs:
