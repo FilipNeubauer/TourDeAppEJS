@@ -11,7 +11,7 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
-const PORT = 8080;
+const PORT = 80;
 
 
 const db = new sqlite3.Database("./test.db", sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
