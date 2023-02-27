@@ -3,12 +3,13 @@ const bodyParser = require("body-parser");
 const sqlite3 = require("sqlite3").verbose();
 const ejs = require("ejs");
 const path = require("path");
+const session = require('express-session');
 const fs = require('fs');
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
 
 const bcrypt = require('bcrypt');
-const saltRounds = 1;
+const saltRounds = 10;
 // const myPlaintextPassword = 's0/\/\P4$$w0rD';
 // const someOtherPlaintextPassword = 'not_bacon';
 
@@ -17,6 +18,12 @@ const app = express();
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
+
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static("public", {redirect: false}));
 
@@ -54,33 +61,13 @@ db.run(sqlCreate);
 
 var records = [];
 
-app.get("/records", (req, res)=>{ //odpovídám načetním databáze, nakonci každého requestu znovu načíst
-    let userId = parseInt(req.query.id)
-    // let userId = 4
-
-    records = [];
-    sqlSelect = "SELECT * FROM programming_train WHERE userId=?";
-    db.all(sqlSelect, [userId], (err, rows) => {
-        if (err) return console.error(err.message, "line 56");
-        rows.forEach((row)=>{
-            // console.log(typeof row);
-            records.push(row);
-            // console.log(records);
-
-        })
-        // console.log(records);
-
-        res.render("list.ejs", {records:records, userId:userId});
-
-        // res.json({"records":records})
-        
-    })
-    
-})
-
 
 app.get("/records/:id", (req, res)=>{ //odpovídám načetním databáze, nakonci každého requestu znovu načíst
     let userId = parseInt(req.params.id)
+
+    if (req.session.loggedin && req.session.username==userId) {
+
+    
     // let userId = 4
 
     records = [];
@@ -107,12 +94,20 @@ app.get("/records/:id", (req, res)=>{ //odpovídám načetním databáze, nakonc
         // res.json({"records":records})
         
     })
+} else {
+    res.redirect("/")
+}
     
 })
 
 app.post("/add/:id", (req, res)=> {  // přidávám do databáze
+
+    
     const userId = parseInt(req.params.id)
-    console.log(userId);
+
+    if (req.session.loggedin && req.session.username==userId) {
+
+    // console.log(userId);
     const body = req.body;
     // console.log(body);
 
@@ -131,13 +126,17 @@ app.post("/add/:id", (req, res)=> {  // přidávám do databáze
 
     res.redirect("/records/" + userId);
 
-  
+    } else {
+        res.redirect("/")
+    }
 
     
 })
 
 app.post("/update/:id", (req, res)=>{   // upravuje
     let userId = parseInt(req.params.id)
+
+    if (req.session.loggedin && req.session.username==userId) {
 
     const body = req.body;
 
@@ -159,12 +158,17 @@ app.post("/update/:id", (req, res)=>{   // upravuje
 
 
 
-
+    } else {
+        res.redirect("/")
+    }
 
 })
 
 app.post("/delete/:id", (req, res)=>{ // smaže
     let userId = parseInt(req.params.id)
+
+    if (req.session.loggedin && req.session.username==userId) {
+
 
 
     const body = req.body;
@@ -177,16 +181,21 @@ app.post("/delete/:id", (req, res)=>{ // smaže
     })
 
     res.redirect("/records/" + userId)
-    
+} else {
+    res.redirect("/")
+}
         
     })
 
 
-app.get("/register", (req, res) => {
-    res.render("register")
-})
+// app.get("/register", (req, res) => {
+//     res.render("register")
+// })
 
 app.post("/register", (req, res) => {
+
+    if (req.session.loggedin && req.session.username=="Admin") {
+
     const userName = req.body.userName;
     const email = req.body.email;
     const password = String(req.body.password);
@@ -242,11 +251,14 @@ app.post("/register", (req, res) => {
         })
 
 
+    }} else {
+        res.redirect("/")
     }
 
 })
 
 app.get("/", (req, res) => {
+    req.session.destroy()
     res.render("login", {success: true})
 })
 
@@ -255,6 +267,11 @@ app.post("/login", (req, res) => {
     const password = String(req.body.password);
 
     if (nameEmail == "Admin" && password == 123456) {
+
+        req.session.loggedin = true
+        req.session.username = "Admin"
+
+
         res.redirect("/admin")
     } else {
 
@@ -288,6 +305,8 @@ app.post("/login", (req, res) => {
                                 currentUser = user
                                 console.log(currentUser)
 
+                                req.session.loggedin = true
+                                req.session.username = user
 
                                 res.redirect("/records/" + user)
                             }
@@ -310,22 +329,31 @@ app.post("/login", (req, res) => {
 }})
 
 app.get("/admin", (req, res)=> {
-    const sqlSelect = "SELECT * FROM users"
-    db.all(sqlSelect, [], (err, rows) => {
-        if (err) return console.error(err.message, "line 308");
-        var users = []
-        rows.forEach((row)=> {
-            users.push(row)
-            // console.log(row)
-        })
-        console.log(users)
-    res.render("admin", {users:users})
 
-    })
+    if (req.session.loggedin) {
+        const sqlSelect = "SELECT * FROM users"
+        db.all(sqlSelect, [], (err, rows) => {
+            if (err) return console.error(err.message, "line 308");
+            var users = []
+            rows.forEach((row)=> {
+                users.push(row)
+                // console.log(row)
+            })
+            console.log(users)
+        res.render("admin", {users:users})
+    
+        })
+    } else {
+        res.redirect("/")
+    }
+
 })
 
 
 app.post("/deleteUser", (req, res) => {
+
+    if (req.session.loggedin && req.session.username==userId) {
+    
     let userId = req.body.userId
     console.log(userId)
 
@@ -339,11 +367,15 @@ app.post("/deleteUser", (req, res) => {
     })
 
     res.redirect("/admin")
-    
+} else {
+    res.redirect("/")
+}
         
 })
 
 app.post("/editUser", (req, res) => {
+    if (req.session.loggedin && req.session.username=="Admin") {
+
     let userId = req.body.userId
 
     const body = req.body;
@@ -390,9 +422,13 @@ app.post("/editUser", (req, res) => {
 
 
 
+}} else {
+    res.redirect("/")
 }})
 
 app.post("/editUserName", (req, res) => {
+    if (req.session.loggedin && req.session.username=="Admin") {
+
     const userId = req.body.userId
     const userName = req.body.userName
 
@@ -416,10 +452,14 @@ app.post("/editUserName", (req, res) => {
             res.redirect("/admin")    
         })
 
+    } } else {
+        res.redirect("/")
     }
 })
 
 app.post("/editUserEmail", (req, res) => {
+    if (req.session.loggedin && req.session.username=="Admin") {
+    
     const userId = req.body.userId
     const email = req.body.email
 
@@ -443,10 +483,15 @@ app.post("/editUserEmail", (req, res) => {
             res.redirect("/admin")    
         })
 
+    }} else {
+        res.redirect("/")
     }
 })
 
 app.post("/editUserPassword", (req, res) => {
+
+    if (req.session.loggedin && req.session.username=="Admin") {
+
     const userId = req.body.userId
     const password = req.body.password
 
@@ -466,7 +511,9 @@ app.post("/editUserPassword", (req, res) => {
             })
             
         }
-    })
+    }) } else {
+        res.redirect("/")
+    }
 })
 
 
@@ -701,6 +748,10 @@ app.get("/download/:userId", (req, res) => {
 
 
 })
+
+app.get('*', function(req, res){
+    res.status(404).render('status');
+  });
 
 app.listen(PORT, ()=>{
     console.log("server running on port " + PORT);
