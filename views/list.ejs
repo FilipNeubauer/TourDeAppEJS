@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="styles.css">
-    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" href="../public/styles.css">
+    <script type="text/javascript" src="../public/index.js"></script>
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,11 @@
 
     <div class="container">
 
-        <h1>Programátorův deník</h1>
+        <h1 class="main-title">Programátorův deník</h1>
+        <h2 class="sub-title">(<%=userName%>)</h2>
+        <form action="/" method="get">
+            <button type="submit" class="sign-out">Sign out</button>
+        </form>
 
         <div class="flex-container">
 
@@ -40,7 +44,7 @@
                                     class="fa-solid fa-pen-to-square"></i></div>
                             <!-- <input class="button-rating" type="button" onclick="openUpdate()"
                                 name="<%=//element.recordId %>" value="Update" /> -->
-                            <form class="button-rating" action="/delete" method="post"
+                            <form class="button-rating" action="/delete/<%=userId%>" method="post"
                                 id="delForm<%=element.recordId%>">
                                 <!-- <button type="submit" name="deleteId" value="<%= //element.recordId %>">Delete</button> -->
                                 <input type="hidden" name="deleteId" value="<%= element.recordId %>">
@@ -131,7 +135,7 @@
 
     </div>
 
-    <form id="add-form" action="/add" method="post">
+    <form id="add-form" action="/add/<%=userId%>" method="post">
 
         <div class="add-div" style="visibility: hidden;">
             <input type="hidden" name="id">
@@ -169,7 +173,7 @@
     </form>
 
 
-    <form action="/update" id="update-form" method="post">
+    <form action="/update/<%=userId%>" id="update-form" method="post">
         <div class="update-div" style="visibility: hidden;">
 
 

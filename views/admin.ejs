@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../public/styles.css">
+    <link rel="stylesheet" href="../public/admin.css">
+
+    <script type="text/javascript" src="../public/admin.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body>
+    <h1 class="admin-h1">Admin</h1>
+
+    <div class="admin-container">
+
+    
+
+    <form action="/" method="get">
+        <button class="sign-out">Sign out</button>
+    </form>
+
+    <div class="add-user-container">
+
+            <form method="post" action="/register">
+                <div class="add-user">
+        <h3 class="add-h3">Přidat nového uživatele</h3>
+                
+                    <div class="admin-add-label">
+                        <label for="userName" class="admin-label">Username</label>
+                <input type="text" name="userName" id="userName" required>
+
+                    </div>
+                    <div class="admin-add-label">
+                        <label for="email" class="admin-label">Email</label>
+                        <input type="email" name="email" id="email" required>
+
+                    </div>
+                    <div class="admin-add-label">
+                        <label for="password" class="admin-label">Heslo</label>
+                <input type="password" name="password" id="password" required>
+
+                    </div>
+                <button type="submit">Add user</button>
+        </div>
+
+            </form>
+ 
+    </div>
+
+    <div class="list-container">
+
+    
+
+    <% users.reverse().forEach((el) => { %>
+
+        <div class="each-user">
+
+            <div class="each-user-main">
+                <div class="nameEmail">
+                    <h2><%= el.userName%></h2>
+                    <p><%= el.email%></p>
+                </div>
+
+
+                <div>
+                <button onclick="showEachForm()" id="<%=el.userId%>">Upravit uživatele</button>
+            </div>
+
+                <form method="post" action="/deleteUser">
+                    <input type="hidden" name="userId" value="<%= el.userId%>">
+                    <button type="submit">Delete User</button>
+                </form>
+
+                <form method="get" action="/download/<%=el.userId%>">
+                    <button type="submit">CSV</button>
+                </form>
+            </div>
+        
+
+
+        <div class="each-forms" style="display:none;"  id="<%=el.userId%>form">
+            <form method="post" action="/editUserName">
+                <input type="hidden" name="userId" value="<%= el.userId%>">
+                <input type="Text" name="userName" value="<%= el.userName%>" required>
+                <button type="submit">Update username</button>
+            </form>
+
+
+            <form method="post" action="/editUserEmail">
+                <input type="hidden" name="userId" value="<%= el.userId%>">
+                <input type="email" name="email" value="<%= el.email%>" required>
+                <button type="submit">Update email</button>
+            </form>
+            <form method="post" action="/editUserPassword">
+                <input type="hidden" name="userId" value="<%= el.userId%>">
+                <input type="text" name="password" required> 
+                <button type="submit">Update password</button>
+    
+            </form>
+        </div>
+
+    </div>
+   <% })%>
+
+</div>
+</div>
+
+
+
+</body>
+</html>
