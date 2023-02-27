@@ -29,7 +29,7 @@ app.use('/public', express.static("public", {redirect: false}));
 
 app.set("view engine", "ejs");
 
-const PORT = 3000;
+const PORT = 80;
 
 var currentUser;
 
@@ -240,7 +240,7 @@ app.post("/register", (req, res) => {
                     if (err) return console.error(err.message, "line 190");
                     let paramId = id.userId
                     currentUser = paramId
-                    console.log(currentUser)
+                    // console.log(currentUser)
 
 
                     res.redirect("/admin")
@@ -303,7 +303,7 @@ app.post("/login", (req, res) => {
 
                             if (result === true) {
                                 currentUser = user
-                                console.log(currentUser)
+                                // console.log(currentUser)
 
                                 req.session.loggedin = true
                                 req.session.username = user
@@ -339,7 +339,7 @@ app.get("/admin", (req, res)=> {
                 users.push(row)
                 // console.log(row)
             })
-            console.log(users)
+            // console.log(users)
         res.render("admin", {users:users})
     
         })
