@@ -537,8 +537,8 @@ app.get("/users/:user_id/records", (req, res) => {
             let obj = {
                 "id": row.recordId,
                 "date": row.date,
-                "time-spent": row.time,
-                "programming-language": row.language,
+                "time_spent": row.time,
+                "programming_language": row.language,
                 "rating":row.rating,
                 "description":row.description
             }
@@ -575,8 +575,8 @@ app.get("/users/:user_id/records/:record_id", (req, res) => {
             let obj = {
                 "id": row.recordId,
                 "date": row.date,
-                "time-spent": row.time,
-                "programming-language": row.language,
+                "time_spent": row.time,
+                "programming_language": row.language,
                 "rating":row.rating,
                 "description":row.description
             }
@@ -611,8 +611,8 @@ app.post("/users/:user_id/records", (req, res) => {
             res.status(404).send("Not Found")
         } else {
             const date = body.date;
-            const language = body["programming-language"];
-            const timeSpent = body["time-spent"];
+            const language = body["programming_language"];
+            const timeSpent = body["time_spent"];
             const rating = body.rating;
             const description = body.description;
 
@@ -635,8 +635,8 @@ app.post("/users/:user_id/records", (req, res) => {
                         let obj = {
                             "id": row.recordId,
                             "date": row.date,
-                            "time-spent": row.time,
-                            "programming-language": row.language,
+                            "time_spent": row.time,
+                            "programming_language": row.language,
                             "rating":row.rating,
                             "description":row.description
                         }
@@ -681,8 +681,8 @@ app.put("/users/:user_id/records/:record_id", (req, res) => {
     // console.log(body)
 
     const date = body.date;
-    const language = body["programming-language"];
-    const time = body["time-spent"];
+    const language = body["programming_language"];
+    const time = body["time_spent"];
     const rating = body.rating;
     const description = body.description;
     const recordId = body.id
@@ -690,8 +690,8 @@ app.put("/users/:user_id/records/:record_id", (req, res) => {
     let obj = {
         "id": record_id,
         "date": date,
-        "time-spent": time,
-        "programming-language": language,
+        "time_spent": time,
+        "programming_language": language,
         "rating":rating,
         "description":description
     }
@@ -715,8 +715,8 @@ app.get("/download/:userId", (req, res) => {
         header:[
             {id: "recordId", tilte:"recordId"},
             {id: "date", title:"date"},
-            {id: "time", title:"time-spent"},
-            {id: "language", title:"programming-language"},
+            {id: "time", title:"time_spent"},
+            {id: "language", title:"programming_language"},
             {id: "rating", title:"rating"},
             {id:"description", title:"description"},
         ]
