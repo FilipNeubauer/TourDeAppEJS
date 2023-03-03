@@ -1,4 +1,3 @@
-const e = require("express")
 
 function showEachForm() {
     const userId = event.target.id
