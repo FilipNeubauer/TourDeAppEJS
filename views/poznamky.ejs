@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="../public/idk.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/styles.css">
+
+
+
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>&lt;Up<span style="color: black">Shop</span>&gt;</h1>
+    </div>
+
+
+
+    <nav>
+
+          <a href="/poznamky">Poznamky</a>
+          <a href="/statistika">Statistika</a>
+      </nav>
+    <nav>
+        
+    </nav>
+<!-- poznamky -->
+    <div class="notes">
+        <% notes.forEach(element => { %>
+            <div class="box">
+                <form class="" action="/delete" method="post">
+                    <!-- <button type="submit" name="deleteId" value="<%= //element.recordId %>">Delete</button> -->
+                    <input type="hidden" name="noteId" value="<%= element.noteId %>">
+                    <button type="submit">DEL</button>
+                    
+
+
+                </form>
+
+
+
+                <p><%= element.desc %></p>
+                <p class="sign"><%= element.sign %></p>    
+            </div>
+        <% }); %>
+    </div>
+
+    <!-- lightbox add -->
+    <div style="visibility: hidden;" class="add-div">
+        <form action="/poznamky" method="post">
+            <input type="text" name="desc" placeholder="Popis">
+            <input type="text" name="sign" placeholder="Podpis">
+            <button type="submit">ADD</button>
+        </form>
+    </div>
+
+    <div class="light-box" onclick="clickedLightBox()"></div>
+
+
+    <button onclick="openAdd()" class="addBut">ADD</button>
+
+
+</body>
+
+
+</html>

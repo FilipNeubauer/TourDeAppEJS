@@ -1,248 +1,120 @@
-body {
-    background-color: #000212;
+/* .container {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
+    background: #D3D3D3;
+    align-items: center;
 }
 
 
-.container {
-    margin: 0 auto;
-    max-width: 44rem;
-    width: 90%;
+
+.stickynote{
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 40px 20px;
+
+
+background: #D75A00;
+border-radius: 7px;
+}
+
+.text{
+    width: 223px; 
+     height: 182px; 
+    
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: justify;
+    color: #FFFFFF;
+}
+
+.podpis{
+width: 206px;
+height: 23px;
+
+font-family: 'Mulish';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+line-height: 23px;
+color: #FFFFFF;
+} */
+
+/* .light-box {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.7;
+    height: 150%;
+    width: 100%;
+    visibility: hidden;
+}
+
+
+
+h1 {
+     width: 339px;
+height: 100px;
+text-align: center;
+
+font-family: 'Mulish';
+font-style: normal;
+font-weight: 500;
+font-size: 80px;
+line-height: 100px;
+text-align: center;
+letter-spacing: -0.1em;
+
+color: #D75A00;
+}
+
+.stat-first-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 100px;
+}
+
+.serverTimeBox {
+    width: 10vh;
+    height: 10vh;
+    background-color: #D75A00;
+}
+
+.lastCom {
+    background-color: #D75A00;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}  */
+
+body {
+    background: #D3D3D3;
+    font-family: 'Mulish';
+    font-weight: 400;
 }
 
 h1 {
+    font-size: 8vh;
     text-align: center;
-    font-family: 'Raleway';
-    font-style: normal;
-    font-size: 43px;
-    font-weight: 700;
-
-    background: linear-gradient(270deg, #AD6EBD 0.01%, #76439E 0.02%, #3351B8 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-/* text-fill-color: transparent; */
-
-padding-top: 40px;
-padding-bottom: 40px;
-
-
+    color: #D75A00;
+    font-weight: 500;
+    letter-spacing: -0.1em;
 }
-
-h2 {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-
-    padding-left: 30px;
-}
-
-p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-    font-family: "Roboto";
-}
-
-input, textarea {
-    border: solid;
-    border-color: #76439E;
-    border-radius: 5px;
- 
-    
-}
-
-textarea {
-    min-width: 300px;
-    resize: none;
-}
-
-hr {
-    width: 100%;
-}
-
-
-footer {
-    /* position: absolute; */
-    font-family: "Roboto";
-
-
-    bottom: 0;
-
-    background: linear-gradient(270deg, #AD6EBD 0.01%, #76439E 0.02%, #3351B8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 15px;
-
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
-    padding: 20px 0 20px;
-}
-
-.flex-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-
-    gap: 30px;
-}
-
-
-
-
-.flex-item {
-    background: linear-gradient(180deg, rgba(118, 67, 158, 0.15) 0%, rgba(52, 81, 183, 0.02) 100%);
-border: 1px solid rgba(255, 255, 255, 0.05);
-box-shadow: 0px 4px 27px rgba(0, 0, 0, 0.25);
-border-radius: 41px;
-isolation: isolate;
-box-sizing: border-box;
-    /* border-radius: 10px; */
-
-    /* border-style: solid;
-    border-color: black; */
-}
-
-.language {
-    display: inline-block;
-}
-
-.rating {
-    display: inline-block
-}
-
-.record-heading {
-    display: flex;
-    justify-content: space-between;
-}
-
-.button-rating {
-    display: inline-block;
-    color: rgba(255, 255, 255, 0.3);
-
-}
-
-.button-rating:hover {
-color: #76439E;
-cursor: pointer;
-
-}
-
-.buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-
-    padding-top: 20px;
-    padding-right: 30px;
-    gap: 5px;
-}
-
-.description {
-    min-height: 100px;
-
-    padding-top: 5px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-}
-
-
-.form-props {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-/* .form-props input[type=date] {
-    width: 100px;
-}    */
-
-.input-props, textarea {
-    width: 121px;
-    background-color: rgba(118, 67, 158, 0.15) ;
-    color: rgba(255, 255, 255, 0.8);
-    
-}
-
-.date-time {
-    color: rgba(255, 255, 255, 0.3);
-    
-    padding-left: 30px;
-    padding-top: 5px;
-}
-
-.record-heading p {
-    color: rgba(255, 255, 255, 0.3);
-}
-
-.colored {
-    color: #AD6EBD;
-}
-
-
-
-
-.add-button {
-    position: fixed;
-    bottom: 5rem;
-    right: 5rem;
-background-color: #76439E;
-border-radius: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 60px;
-width: 60px;
-
-    /* height: 3rem;
-    width: 3rem; */
-}
-
-.add-button:hover {
-    background-color: #AD6EBD;
-    cursor: pointer;
-}
-
-.add-button i {
-    font-size: 30px;
-}
-
-
-
-
-
-.add-div {
-    position: fixed;
+ .add-div {
     z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    border-radius: 41px;
-
-    flex-direction: column;
-    gap: 10px;
-    color: rgba(255, 255, 255, 0.8);
-    border: solid;
-    border-color: #76439E;
-    background: #000212;
-
-
-    padding: 30px;
-}
-
-.update-div {
     position: fixed;
     z-index: 2;
     top: 50%;
@@ -256,14 +128,27 @@ width: 60px;
     gap: 10px;
     color: rgba(255, 255, 255, 0.8);
     border: solid;
-    border-color: #76439E;
-    background: #000212;
+    background-color: black;
+    padding: 3vh;
+} 
 
-
-    padding: 30px;
+.add-div form input {
+    font-size: 3vh;
 }
 
-.light-box {
+.add-div form button {
+    font-size: 3vh
+}
+
+.notes .box form button {
+    font-size: 3vh;
+}
+
+.sign {
+    font-weight: 300;
+    font-size: 2vh;
+}
+ .light-box {
     z-index: 1;
     position: fixed;
     top: 0;
@@ -275,56 +160,98 @@ width: 60px;
     visibility: hidden;
 }
 
-.ratings {
+.box {
+    height: 30vh;
+    width: 30vh;
+    background-color: #D75A00;
+    overflow: hidden;
+    filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.25));
+    border-radius: 7px;
+}
+
+.box p {
+    inline-size: 28vh;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+p {
+    font-size: 2vh;
+}
+
+.notes {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+nav a {
+    font-size: 3vh;
+}
+
+.addBut {
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    font-size: 3vh;
+/* background-color: #76439E; */
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 10vh;
+width: 10vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-
-    padding-right: 30px;
+    gap: 100px;
+    color: white;
 }
 
-.post-add-button {
+.statBox {
+    height: 25vh;
+    width: 25vh;
+    background-color: #D75A00;
+    border-radius: 7px;
+}
+.heading-stat {
+    font-weight: 600;
+}
+
+.stat-first-line {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 100px
+
 }
 
-.post-add-button button {
-    height: 30px;
-    width: 100px;
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #76439E;
-
-    border-radius: 10px;
+.lastBox {
+    /* height: 30vh;
+    width: 60vh; */
+    background-color: #D75A00;
+    /* inline-size: 20vh;
+    overflow-wrap: break-word; */
+    border-radius: 7px;
 }
 
-.sign-out {
-    position: absolute;
-    top: 100px;
-    right: 100px;
-    font-size: 17px;
-}
-
-.sub-title {
+.lastBox p {
     text-align: center;
-    font-family: 'Raleway';
-    font-style: normal;
-    font-size: 30px;
-    text-align: center;
-    font-weight: 700;
-    padding: 0;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    background: linear-gradient(270deg, #AD6EBD 0.01%, #76439E 0.02%, #3351B8 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-/* text-fill-color: transparent; */
-
+    padding: 20px;
 }
 
-.main-title {
-    margin-bottom: 0;
-    padding-bottom: 0;
-
+.statBox p {
+    text-align: center;
+    padding: 20px;
 }
