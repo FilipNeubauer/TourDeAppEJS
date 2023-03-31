@@ -53,7 +53,7 @@ db.run(sqlCreate)
 
 
 
-app.get("/poznamky", (req, res) => {
+app.get("/", (req, res) => {
     const poznamky = []
     sqlSelect = "SELECT * FROM notes";
     db.all(sqlSelect, [], (err, rows) => {
@@ -81,7 +81,7 @@ app.post("/poznamky", (req, res) => {
     })
 
 
-    res.redirect("/poznamky")
+    res.redirect("/")
 })
 
 app.post("/delete", (req, res) => {
@@ -93,7 +93,7 @@ app.post("/delete", (req, res) => {
     sqlDel = `DELETE FROM notes WHERE noteId=?;`
     db.run(sqlDel, [body.noteId], (err) => {
         if (err) return console.error(err.message, "line 75");
-        res.redirect("/poznamky")
+        res.redirect("/")
     })
 
 })
